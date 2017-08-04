@@ -1,19 +1,22 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import * as injectTapEventPlugin from 'react-tap-event-plugin';
 
-var CommentBox = React.createClass({
-  render: function() {
-    return (
-      <div className="commentBox">
-        Hello, world! I am a CommentBox.
-      </div>
-    );
-  }
-});
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import MyAwesomeReactComponent from './components/MyAwesomeReactComponent';
+
+injectTapEventPlugin();
+const App = () => (
+  <MuiThemeProvider>
+    <MyAwesomeReactComponent content="hello" />
+  </MuiThemeProvider>
+);
+
 ReactDOM.render(
-  <CommentBox />,
+  <App />,
   document.getElementById('root')
 );
+
 //import React from 'react'
 //import { render } from 'react-dom'
 //import { Provider } from 'react-redux'

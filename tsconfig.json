@@ -4,7 +4,6 @@
     "noUnusedLocals" : true,
     "noImplicitThis": true,
     "alwaysStrict": true,
-    "outDir": "./app/assets/javascripts/",
     "sourceMap": true,
     "noImplicitAny": true,
     "lib": ["dom", "ES2017"],
