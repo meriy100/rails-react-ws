@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
-import LoginComponent from '../components/LoginComponent';
+import AppComponent from '../components/AppComponent';
 
-import { sessionCreate, sessionDestory } from '../actions/current_user'
+import { sessionGet, sessionDestory } from '../actions/current_user'
 
 const mapStateToProps = (state:any) => {
   return {
@@ -11,13 +11,13 @@ const mapStateToProps = (state:any) => {
 
 const mapDispatchToProps = (dispatch:any) => {
   return {
-    handleLogin: (user:{}) => { sessionCreate(user)(dispatch) },
+    handleLoginCheck: () => { sessionGet()(dispatch) },
     handleLogout: () => { sessionDestory()(dispatch) },
   }
 }
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
-)(LoginComponent);
+  mapDispatchToProps,
+)(AppComponent);
 

@@ -6,8 +6,7 @@ import { createStore, applyMiddleware } from 'redux'
 
 import {
   BrowserRouter as Router,
-  Route,
-  Link
+  Route
 } from 'react-router-dom'
 
 
@@ -15,10 +14,11 @@ import {
 import createLogger from 'redux-logger';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-import MyAwesomeReactComponent from './components/MyAwesomeReactComponent';
-import SessionContainer from './containers/SessionContainer';
+import AppContainer from './containers/AppContainer'
 
 import reducer from './reducers'
+
+import SessionContainer from './containers/SessionContainer';
 
 injectTapEventPlugin();
 const loggerMiddleware = (createLogger as any)();
@@ -27,33 +27,14 @@ let store = createStore(reducer,
   applyMiddleware(loggerMiddleware)
 )
 
-const Home = () => (
-  <div>
-    <MyAwesomeReactComponent content="hello" />
-  </div>
-)
-
-const About = () => (
-  <div>
-    <h2>About</h2>
-  </div>
-)
-
 const App = () => (
   <Provider store={store}>
     <Router>
       <MuiThemeProvider>
-        <div>
-          <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/about">About</Link></li>
-            <li><Link to="/topics">Topics</Link></li>
-          </ul>
-          <hr/>
-          <Route exact path="/" component={Home}/>
-          <Route path="/about" component={About}/>
-          <Route path='/topics' component={SessionContainer}/>
-        </div>
+          <div>
+            <Route component={AppContainer}/>
+            <Route path="/login" component={SessionContainer}/>
+          </div>
       </MuiThemeProvider>
     </Router>
   </Provider>

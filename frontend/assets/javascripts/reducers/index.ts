@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
 export type currentUser = {
-  name : string;
+  email : string;
 }; 
 
 export type ReduxState = {
@@ -10,8 +10,9 @@ export type ReduxState = {
 
 
 const initial = {
-  name: "user"
+  email: "",
 }
+
 const current_user = (state = initial, action:any):currentUser => {
   switch(action.type) {
     case "SET_CURRENT_USER":
