@@ -1,10 +1,10 @@
 module.exports = {
   devtool: 'inline-source-map',
   entry: {
-    application: './frontend/assets/javascripts/application.ts'
+    application: './frontend/assets/javascripts/application.tsx'
   },
   output: {
-    path: './app/assets/javascripts',
+    path: `${__dirname}/../../../app/assets/javascripts`,
     filename: '[name].bundle.js'
   },
 

@@ -27,5 +27,6 @@ config/database.yml
 .env
 node_modules/
 app/assets/javascripts/application.bundle.js
+app/assets/javascripts/application.bundle.js.map
 *.swp
 .idea/
