@@ -1,4 +1,26 @@
 import { combineReducers } from 'redux';
 
-const reducer = combineReducers({})
+export type currentUser = {
+  name : string;
+}; 
+
+export type ReduxState = {
+  current_user :currentUser;
+}
+
+
+const initial = {
+  name: "user"
+}
+const current_user = (state = initial, action:any):currentUser => {
+  switch(action.type) {
+    case "SET_CURRENT_USER":
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
+
+const reducer = combineReducers({current_user})
 export default reducer;
