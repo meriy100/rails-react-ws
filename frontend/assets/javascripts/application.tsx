@@ -6,7 +6,8 @@ import { createStore, applyMiddleware } from 'redux'
 
 import {
   BrowserRouter as Router,
-  Route
+  Route,
+  Switch
 } from 'react-router-dom'
 
 
@@ -14,11 +15,13 @@ import {
 import createLogger from 'redux-logger';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-import AppContainer from './containers/AppContainer'
+import AppComponent from './components/AppComponent'
+import AuthContainer from './containers/AuthContainer'
+import LoginContainer from './containers/LoginContainer'
+import LayoutComponent from './components/LayoutComponent'
 
 import reducer from './reducers'
 
-import SessionContainer from './containers/SessionContainer';
 
 injectTapEventPlugin();
 const loggerMiddleware = (createLogger as any)();
@@ -27,14 +30,30 @@ let store = createStore(reducer,
   applyMiddleware(loggerMiddleware)
 )
 
+const Sample = () => (
+  <div>
+    <p>ログインしたよー</p>
+  </div>
+)
+
+
+
 const App = () => (
   <Provider store={store}>
     <Router>
       <MuiThemeProvider>
-          <div>
-            <Route component={AppContainer}/>
-            <Route path="/login" component={SessionContainer}/>
-          </div>
+        <AppComponent>
+          <Switch>
+            <Route exact path='/login' component={LoginContainer} />
+            <AuthContainer>
+              <LayoutComponent>
+                <Switch>
+                  <Route path="/" component={Sample} />
+                </Switch>
+              </LayoutComponent>
+            </AuthContainer>
+          </Switch>
+        </AppComponent>
       </MuiThemeProvider>
     </Router>
   </Provider>

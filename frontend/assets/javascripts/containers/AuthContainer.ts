@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
-import AppComponent from '../components/AppComponent';
+import AuthComponent from '../components/AuthComponent';
 
-import { sessionGet, sessionDestory } from '../actions/current_user'
+import { sessionGet } from '../actions/current_user'
 
 const mapStateToProps = (state:any) => {
   return {
@@ -12,12 +12,11 @@ const mapStateToProps = (state:any) => {
 const mapDispatchToProps = (dispatch:any) => {
   return {
     handleLoginCheck: () => { sessionGet()(dispatch) },
-    handleLogout: () => { sessionDestory()(dispatch) },
   }
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(AppComponent);
+)(AuthComponent);
 
