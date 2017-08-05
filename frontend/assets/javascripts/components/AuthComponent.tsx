@@ -13,9 +13,13 @@ interface Props {
 
 export default class AuthComponent extends React.Component<Props, {}> {
 
-  componentWillMount() {
+  componentDidMount() {
     this.userWillTransfer(this.props);
   }
+
+  // componentWillMount() {
+  //   this.userWillTransfer(this.props);
+  // }
 
   componentWillUpdate(nextProps:any) {
     this.userWillTransfer(this.props);

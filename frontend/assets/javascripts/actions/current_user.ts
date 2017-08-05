@@ -1,9 +1,10 @@
 import { setErrorHandler } from './error_handler'
 import {currentUser} from './../reducers'
 import axiosHelper from '../lib/axiosHelper';
+const SET_CURRENT_USER = 'SET_CURRENT_USER';
 
 export const setCurrentUser = (user:currentUser) => {
-  return { type: 'SET_CURRENT_USER', payload: user }
+  return { type: SET_CURRENT_USER, payload: user }
 }
 
 export const sessionGet = () => {

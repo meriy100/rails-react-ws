@@ -45,43 +45,39 @@ export default class LoginComponent extends React.Component<Props, State> {
       "marginTop": "48px",
       "width": "480px"
     }
-    if (this.props.current_user.email === "") {
-      return (
+    console.log(this.props.current_user.email)
+    return (
+      this.props.current_user.email === "" ? (
         <Card style={cardStyle}>
-            <CardTitle title="Card title" subtitle="Card subtitle" />
-            <CardText>
-              <TextField
-                  hintText="Hint Text"
-                  floatingLabelText="Fixed Floating Label Text"
-                  floatingLabelFixed={true}
-                  value={this.state.email}
-                  onChange={this.handleEmailChange}
-                /><br />
+          <CardTitle title="Card title" subtitle="Card subtitle" />
+          <CardText>
             <TextField
-                  hintText="Password Field"
-                  floatingLabelText="Password"
-                  type="password"
-                  value={this.state.password}
-                  onChange={this.handlePasswordChange}
-                />
-            </CardText>
-            <CardActions>
-              <FlatButton label="Login" onClick={() => this.props.handleLogin({email: this.state.email, password: this.state.password})}/>
-            </CardActions>
-            <Snackbar
-                      open={this.props.error_handler.is_show}
-                      message={this.props.error_handler.message}
-                      autoHideDuration={4000}
-                    />
-          </Card>
+              hintText="Hint Text"
+              floatingLabelText="Fixed Floating Label Text"
+              floatingLabelFixed={true}
+              value={this.state.email}
+              onChange={this.handleEmailChange} />
+              <br />
+          <TextField
+            hintText="Password Field"
+            floatingLabelText="Password"
+            type="password"
+            value={this.state.password}
+            onChange={this.handlePasswordChange} />
+          </CardText>
+          <CardActions>
+            <FlatButton label="Login" onClick={() => this.props.handleLogin({email: this.state.email, password: this.state.password})}/>
+          </CardActions>
+          <Snackbar
+                    open={this.props.error_handler.is_show}
+                    message={this.props.error_handler.message}
+                    autoHideDuration={4000}
+                  />
+        </Card>
+      ) : (
+        <Redirect to={'/'} />
       )
-    } else {
-      return (
-        <Redirect to={{
-          pathname: '/'
-        }}/>
-      );
-    }
+    ) 
   }
 }
 
