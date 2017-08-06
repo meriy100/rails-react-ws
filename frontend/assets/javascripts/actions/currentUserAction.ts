@@ -1,19 +1,21 @@
-import { setErrorHandler } from './error_handler'
-import {currentUser} from './../reducers'
+import { setErrorHandler } from './errorHandlerAction'
+import { setAuthToken, destroyAuthToken } from './authTokenAction'
+import { currentUser } from './../reducers'
 import axiosHelper from '../lib/axiosHelper';
-const SET_CURRENT_USER = 'SET_CURRENT_USER';
+import * as Actions from './';
 
 export const setCurrentUser = (user:currentUser) => {
-  return { type: SET_CURRENT_USER, payload: user }
+  return { type: Actions.SET_CURRENT_USER, payload: user }
 }
 
 export const sessionGet = () => {
   return (dispatch:any) => {
     return axiosHelper.get(`/api/session`).then((response) => {
+      dispatch(setAuthToken())
       dispatch(setCurrentUser(response.data))
     }).catch((error) => {
-      console.log(error.response.data.message)
-      dispatch(setCurrentUser({email: ""}))
+      dispatch(destroyAuthToken());
+      dispatch(setCurrentUser({email: ""}));
     })
   }
 }
@@ -21,9 +23,11 @@ export const sessionGet = () => {
 export const sessionCreate = (params = {}) => {
   return (dispatch:any) => {
     return axiosHelper.post(`/api/session`, {user: params}).then((response) => {
+      dispatch(setAuthToken())
       dispatch(setCurrentUser(response.data));
     }).catch((error) => {
-       dispatch(setErrorHandler(error.response.data.message));
+      dispatch(setErrorHandler(error.response.data.message));
+      dispatch(destroyAuthToken());
     })
   }
 }
@@ -31,9 +35,9 @@ export const sessionCreate = (params = {}) => {
 export const sessionDestroy = () => {
   return (dispatch:any) => {
     return axiosHelper.delete('/api/session').then((response) => {
+      dispatch(destroyAuthToken());
       dispatch(setCurrentUser({email: ""}));
     }).catch((response) => {
-      console.log(response);
       dispatch(setErrorHandler(response.data.message));
     })
   }

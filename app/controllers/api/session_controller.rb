@@ -15,10 +15,9 @@ class Api::SessionController < ApplicationController
     end
   end
 
-  # logout だと csrf もなくなるので
+  # logout だと csrf もなくなるので けどどうすればいいかわからんで
   def destroy
-    session['user_id'] == nil
-    @current_user = nil
+    logout
     render json: {}
   end
 

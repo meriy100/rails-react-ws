@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {currentUser} from '../reducers'
+import { currentUser, AuthToken } from '../reducers'
 
 import {
   Route, 
@@ -8,36 +8,41 @@ import {
 
 interface Props {
   current_user:currentUser;
+  auth_token:AuthToken;
   handleLoginCheck:any;
 }
 
 export default class AuthComponent extends React.Component<Props, {}> {
 
-  componentDidMount() {
-    this.userWillTransfer(this.props);
-  }
-
-  // componentWillMount() {
+  // componentDidMount() {
   //   this.userWillTransfer(this.props);
   // }
 
-  componentWillUpdate(nextProps:any) {
+  componentWillMount() {
     this.userWillTransfer(this.props);
   }
 
+  componentWillUpdate(nextProps:Props) {
+    this.userWillTransfer(nextProps)
+  }
+
   userWillTransfer(props:Props) {
-    if(this.props.current_user.email === "") {
+    if(props.auth_token.has_session === undefined) {
       props.handleLoginCheck();
     }
   }
 
   render() {
-    return (
-      this.props.current_user.email !== "" ? (
-        <Route children={this.props.children} />
-      ) : (
-        <Redirect to={'/login'} />
+    if (this.props.auth_token.has_session === undefined) {
+      return (<div></div>)
+    } else {
+      return (
+        this.props.auth_token.has_session ? (
+          <Route children={this.props.children} />
+        ) : (
+          <Redirect to={'/login'} />
+        )
       )
-    )
+    }
   }
 }

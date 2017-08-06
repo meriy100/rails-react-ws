@@ -1,18 +1,16 @@
 import * as React from "react";
-import IconMenu from 'material-ui/IconMenu';
+import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
-import FontIcon from 'material-ui/FontIcon';
-import NavigationExpandMoreIcon from 'material-ui/svg-icons/navigation/expand-more';
-import MenuItem from 'material-ui/MenuItem';
-import DropDownMenu from 'material-ui/DropDownMenu';
-import RaisedButton from 'material-ui/RaisedButton';
-import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
+import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
+import FlatButton from 'material-ui/FlatButton';
 
-import { currentUser } from '../reducers'
+import { currentUser, LayoutState } from '../reducers'
 
 interface Props {
   current_user: currentUser;
+  layout_state: LayoutState;
   handleLogout: any;
+  handleSetLayoutState: any;
 }
 
 interface State {
@@ -32,36 +30,17 @@ export default class LoginComponent extends React.Component<Props, State> {
   handleChange = (event:any, index:any, value:number) => this.setState({value});
 
   render() {
+    const styles = {
+      title: {
+        cursor: 'pointer',
+      },
+    };
     return (
-      <Toolbar>
-        <ToolbarGroup firstChild={true}>
-          <DropDownMenu value={this.state.value} onChange={this.handleChange}>
-            <MenuItem value={1} primaryText="All Broadcasts" />
-            <MenuItem value={2} primaryText="All Voice" />
-            <MenuItem value={3} primaryText="All Text" />
-            <MenuItem value={4} primaryText="Complete Voice" />
-            <MenuItem value={5} primaryText="Complete Text" />
-            <MenuItem value={6} primaryText="Active Voice" />
-            <MenuItem value={7} primaryText="Active Text" />
-          </DropDownMenu>
-        </ToolbarGroup>
-        <ToolbarGroup>
-          <ToolbarTitle text="Options" />
-          <FontIcon className="muidocs-icon-custom-sort" />
-          <ToolbarSeparator />
-          <RaisedButton label="Logout" primary={true}  onClick={() => this.props.handleLogout()} />
-          <IconMenu
-            iconButtonElement={
-              <IconButton touch={true}>
-                <NavigationExpandMoreIcon />
-              </IconButton>
-            }
-          >
-            <MenuItem primaryText="Download" />
-            <MenuItem primaryText="More Info" />
-          </IconMenu>
-        </ToolbarGroup>
-      </Toolbar>
+      <AppBar
+        title={<span style={styles.title}>Title</span>}
+        iconElementLeft={<IconButton onClick={() => this.props.handleSetLayoutState({is_drawer_open: true})}><NavigationMenu /></IconButton>}
+        iconElementRight={ <FlatButton label="Logout" onClick={() => this.props.handleLogout()} /> }
+      />
     )
   }
 }
