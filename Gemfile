@@ -23,6 +23,9 @@ gem 'seed-fu'
 
 gem "sorcery"
 
+# Session Store
+gem 'redis-session-store'
+
 group :development, :test do
   gem 'listen'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

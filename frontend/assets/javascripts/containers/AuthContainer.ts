@@ -3,6 +3,7 @@ import AuthComponent from '../components/AuthComponent';
 
 import { sessionGet } from '../actions/currentUserAction'
 
+
 const mapStateToProps = (state:any) => {
   return {
     current_user: state.current_user,

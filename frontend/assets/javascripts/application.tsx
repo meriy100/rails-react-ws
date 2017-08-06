@@ -30,13 +30,7 @@ let store = createStore(reducer,
   applyMiddleware(loggerMiddleware)
 )
 
-const Sample = () => (
-  <div>
-    <p>ログインしたよー</p>
-  </div>
-)
-
-
+const Sample = () => ( <div></div>)
 
 const App = () => (
   <Provider store={store}>
