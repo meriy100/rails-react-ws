@@ -30,3 +30,4 @@ app/assets/javascripts/application.bundle.js
 app/assets/javascripts/application.bundle.js.map
 *.swp
 .idea/
+dump.rdb

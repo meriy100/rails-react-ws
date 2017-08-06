@@ -24,7 +24,7 @@ gem 'seed-fu'
 gem "sorcery"
 
 # Session Store
-gem 'redis-session-store'
+gem 'redis-rails'
 
 group :development, :test do
   gem 'listen'

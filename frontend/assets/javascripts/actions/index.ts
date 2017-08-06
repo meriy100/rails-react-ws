@@ -1,5 +1,7 @@
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 
+export const SET_USERS = 'SET_USERS';
+
 export const SET_ERROR_HANDLER = 'SET_ERROR_HANDLER';
 
 export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN';

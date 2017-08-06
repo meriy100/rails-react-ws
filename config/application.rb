@@ -16,14 +16,15 @@ module RailsReactWs
     # -- all .rb files in that directory are automatically loaded.
     #
 
-    config.session_store :redis_session_store, {
-      key: "rails_react",
-      redis: {
-        db: 5,
-        expire_after: 1.month,
-        key_prefix: 'terminalq:session:',
-        host: 'localhost',
+
+    config.session_store :redis_store, {
+      servers: {
+          host: 'localhost',
+          port: 6379,
+          db: 0,
+          namespace: 'sessions'
       },
+      expire_after: 60.minutes
     }
   end
 end

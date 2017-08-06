@@ -1,6 +1,7 @@
 class ApiChannel < ApplicationCable::Channel
   def subscribed
     stream_from "some_channel"
+    stream_from "user_#{current_user.id}"
   end
 
   def unsubscribed
@@ -9,5 +10,6 @@ class ApiChannel < ApplicationCable::Channel
 
   def post(data)
     ActionCable.server.broadcast('some_channel', type: 'FOO', payload: { foo: current_user })
+    ActionCable.server.broadcast("user_#{current_user.id}", type: 'test', payload: { foo: current_user })
   end
 end

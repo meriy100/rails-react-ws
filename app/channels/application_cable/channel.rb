@@ -11,7 +11,7 @@ module ApplicationCable
     protected
 
     def find_verified_user
-      "ok"
+      User.find(cookies.signed[:user_id])
     end
   end
 end

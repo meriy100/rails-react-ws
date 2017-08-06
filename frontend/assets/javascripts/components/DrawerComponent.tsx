@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import AppBar from 'material-ui/AppBar';
@@ -7,6 +8,8 @@ import NavigationClose from 'material-ui/svg-icons/navigation/close';
 
 import { LayoutState } from '../reducers'
 import ApiChannel from '../lib/ApiChannel';
+
+
 
 interface Props {
   layout_state: LayoutState;
@@ -21,7 +24,7 @@ export default class DrawerComponent extends React.Component<Props, any> {
         <AppBar
           iconElementLeft={<IconButton onClick={ () => { this.props.handleSetLayoutState({ is_drawer_open: false }) } }><NavigationClose /></IconButton>}
         />
-        <MenuItem>Menu Item</MenuItem>
+        <Link to={'/users'}><MenuItem>Users</MenuItem></Link>
         <MenuItem>Menu Item 2</MenuItem>
       </Drawer>
     );

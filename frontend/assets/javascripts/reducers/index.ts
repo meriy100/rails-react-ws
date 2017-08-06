@@ -3,6 +3,7 @@ import { error_handler } from './error_handler';
 import auth_token from './auth_token';
 import current_user from './current_user';
 import layout_state from './layout_state';
+import users from './users';
 
 export type currentUser = {
   email : string;
@@ -21,5 +22,15 @@ export type LayoutState = {
   is_drawer_open:boolean;
 }
 
-const reducer = combineReducers({current_user, auth_token, layout_state, error_handler})
+export type User = {
+  email: string;
+}
+
+const reducer = combineReducers({
+  current_user, 
+  users, 
+  auth_token, 
+  layout_state, 
+  error_handler
+})
 export default reducer;
