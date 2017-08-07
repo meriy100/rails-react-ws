@@ -45,8 +45,8 @@ const App = () => (
             <AuthContainer>
               <LayoutComponent>
                 <Switch>
+                  <Route path="/users" component={UsersContainer} /> 
                   <Route path="/" component={Sample} />
-                  <Route path="/users" component={UsersContainer} />
                 </Switch>
               </LayoutComponent>
             </AuthContainer>
