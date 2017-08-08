@@ -4,7 +4,13 @@ import { currentUser } from './../reducers'
 import axiosHelper from '../lib/axiosHelper';
 import * as Actions from './';
 
-export const setCurrentUser = (user:currentUser) => {
+const initialize = {
+  id: -1,
+  email: '',
+  name: '',
+}
+
+export const setCurrentUser = (user:currentUser|undefined) => {
   return { type: Actions.SET_CURRENT_USER, payload: user }
 }
 
@@ -15,7 +21,7 @@ export const sessionGet = () => {
       dispatch(setCurrentUser(response.data))
     }).catch((error) => {
       dispatch(destroyAuthToken());
-      dispatch(setCurrentUser({email: ""}));
+      dispatch(setCurrentUser(initialize));
     })
   }
 }
@@ -36,7 +42,7 @@ export const sessionDestroy = () => {
   return (dispatch:any) => {
     return axiosHelper.delete('/api/session').then((response) => {
       dispatch(destroyAuthToken());
-      dispatch(setCurrentUser({email: ""}));
+      dispatch(setCurrentUser(initialize));
     }).catch((response) => {
       dispatch(setErrorHandler(response.data.message));
     })

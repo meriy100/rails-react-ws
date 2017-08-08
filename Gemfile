@@ -26,6 +26,8 @@ gem "sorcery"
 # Session Store
 gem 'redis-rails'
 
+gem 'bootstrap-sass'
+
 group :development, :test do
   gem 'listen'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

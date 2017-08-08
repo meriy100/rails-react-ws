@@ -1,12 +1,13 @@
 import { currentUser } from './'
 import * as Actions from '../actions'
 
-
-const initial = {
-  email: "",
+const initialize = {
+  id: -1,
+  email: '',
+  name: '',
 }
 
-export default (state = initial, action:any):currentUser => {
+export default (state = initialize, action:any):currentUser => {
   switch(action.type) {
     case Actions.SET_CURRENT_USER:
       return action.payload;

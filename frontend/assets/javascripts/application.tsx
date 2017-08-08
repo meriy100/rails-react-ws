@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 import * as injectTapEventPlugin from 'react-tap-event-plugin';
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
-import UsersContainer from './containers/UsersContainer'
+import routes from './config/routes'
 
 import {
   BrowserRouter as Router,
@@ -33,7 +33,7 @@ let store = createStore(reducer,
 
 export const dispatch = store.dispatch;
 
-const Sample = () => ( <div></div>)
+export const Sample = () => ( <div></div>)
 
 const App = () => (
   <Provider store={store}>
@@ -45,8 +45,9 @@ const App = () => (
             <AuthContainer>
               <LayoutComponent>
                 <Switch>
-                  <Route path="/users" component={UsersContainer} /> 
-                  <Route path="/" component={Sample} />
+                  { routes.map(route => 
+                    <Route key={ route.path } path={ route.path } component={route.component} /> 
+                   )}
                 </Switch>
               </LayoutComponent>
             </AuthContainer>

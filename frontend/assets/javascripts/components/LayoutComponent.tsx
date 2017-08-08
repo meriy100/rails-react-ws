@@ -6,11 +6,16 @@ import DrawerContainer from '../containers/DrawerContainer'
 
 export default class LayoutComponent extends React.Component<any, {}>  {
   render() {
+    const layoutBodyStayle = {
+      marginTop: '48px',
+    }
     return (
       <div>
         <HeaderContainer />
         <DrawerContainer />
-        <Route children={this.props.children} />
+        <div className="container" style={layoutBodyStayle}>
+          <Route children={this.props.children} />
+        </div>
       </div>
     )
   }

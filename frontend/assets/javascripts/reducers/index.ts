@@ -6,6 +6,8 @@ import layout_state from './layout_state';
 import users from './users';
 
 export type currentUser = {
+  id: number;
+  name: string;
   email : string;
 }; 
 
@@ -23,7 +25,17 @@ export type LayoutState = {
 }
 
 export type User = {
+  id: number;
+  name: string;
   email: string;
+}
+
+export type State = {
+  current_user?:currentUser;
+  users:Array<User> 
+  auth_token:AuthToken; 
+  layout_state:LayoutState; 
+  error_handler:ErrorHandler;
 }
 
 const reducer = combineReducers({

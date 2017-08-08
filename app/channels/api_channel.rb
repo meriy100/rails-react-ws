@@ -9,11 +9,15 @@ class ApiChannel < ApplicationCable::Channel
   end
 
   def get(data)
-    UsersReceiver.new(current_user, "some_channel").index
+    UsersReceiver.new(current_user, "some_channel", data).index
   end
 
-  def post(data)
-    ActionCable.server.broadcast('some_channel', type: 'FOO', payload: { foo: current_user })
-    ActionCable.server.broadcast("user_#{current_user.id}", type: 'test', payload: { foo: current_user })
+  def action(data)
+    receiver = "#{data["resource"]}_receiver".classify.constantize.new(current_user, "some_channel", data)
+    receiver.__send__(data["method"])
+
+    rescue e
+      ActionCable.server.broadcast("user_#{current_user.id}",
+        type: 'SET_ERROR_HANDLER', payload: { message: e.message })
   end
 end

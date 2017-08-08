@@ -7,7 +7,6 @@ import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 
 import { LayoutState } from '../reducers'
-import ApiChannel from '../lib/ApiChannel';
 
 
 
@@ -18,7 +17,6 @@ interface Props {
 
 export default class DrawerComponent extends React.Component<Props, any> {
   render() {
-    ApiChannel.perform('post', { two: true });
     return (
       <Drawer open={ this.props.layout_state.is_drawer_open } > 
         <AppBar
