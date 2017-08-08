@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom';
 import RaisedButton from 'material-ui/RaisedButton';
 
 import ApiChannel from '../../lib/ApiChannel';
-// import { RouteWithSubRoutes } from '../../application'
+import { RouteWithSubRoutes } from '../../application'
 
 interface Props {
   users: Array<Reducers.User>;
@@ -32,7 +32,7 @@ export default class UsersComponent extends React.Component<Props, any> {
   render() {
     return ( 
       <div>
-        {/* { this.props.routes.map((route:any, i:number) => <RouteWithSubRoutes key={i} {...route} />) } */}
+         { this.props.routes.map((route:any, i:number) => (<RouteWithSubRoutes key={i} {...route} />) ) } 
         <Card>
           <CardTitle><h2>ユーザー一覧</h2></CardTitle>
           <CardActions>

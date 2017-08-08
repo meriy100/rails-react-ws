@@ -34,22 +34,11 @@ let store = createStore(reducer,
 
 export const dispatch = store.dispatch;
 
-export const Sample = () => ( <div></div>)
-
-const routeMap = (route:any) => {
-  return (
-    <Route key={ route.path } path={ route.path } component={route.component} > 
-      { route.children.map((child:any) => { routeMap(child) }) }
-    </Route>
-  )
-}
-
-const RouteWithSubRoutes = (route:RouteMap) => (
+export const RouteWithSubRoutes = (route:RouteMap) => (
   <Route path={route.path} render={props => (
-    <route.component {...props} routes={route.routes}/>
+     <route.component {...props} routes={route.routes}/> 
   )}/>
 )
-
 
 const App = () => (
   <Provider store={store}>
@@ -61,10 +50,9 @@ const App = () => (
             <AuthContainer>
               <LayoutComponent>
                 <Switch>
-                  {routes.map((route, i) => <RouteWithSubRoutes key={i} {...route}/> ) } 
-                  {/* {routes.map((route, i) => 
-                    <Route key={i} path={route.path} render={ props => { return (<route.component {...props} /> ) }  } /> 
-                  ) }  */}
+                  {routes.map((route, i) => (
+                    <RouteWithSubRoutes key={i} {...route}/>
+                  ) ) }   
                 </Switch>
               </LayoutComponent>
             </AuthContainer>

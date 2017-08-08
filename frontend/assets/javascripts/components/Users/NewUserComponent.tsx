@@ -46,7 +46,7 @@ export default class NewUserComponent extends React.Component<Props, any> {
 
   render() {
     return ( 
-      <Card key={this.props.next_location.pathname}>
+      <Card key={this.props.next_location.pathname} style={{ marginBottom: '48px' }}>
         <CardTitle>
           <h1>New Users</h1>
         </CardTitle>

@@ -14,7 +14,7 @@ export default class UserComponent extends React.Component<Props, any> {
 
   render() {
     return (this.props.user === undefined ? <div/> :
-      <Card>
+      <Card style={{ marginBottom: '48px' }}>
         <CardTitle><h1>ユーザー詳細</h1></CardTitle>
         <CardText>
           { this.props.user.name }
