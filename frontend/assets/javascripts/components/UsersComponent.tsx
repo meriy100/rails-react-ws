@@ -30,7 +30,7 @@ export default class UsersComponent extends React.Component<Props, any> {
     return ( 
       <div>
         <h1>Users</h1>
-        <Link to={'/users/new'}> <RaisedButton label="Default" /></Link>
+        <Link to={'/users/new'}> <RaisedButton label="Create" /></Link>
         <Table>
           <TableHeader displaySelectAll={false} adjustForCheckbox={false} >
             <TableRow >
@@ -46,7 +46,7 @@ export default class UsersComponent extends React.Component<Props, any> {
                 <TableRowColumn>{user.id}</TableRowColumn>
                 <TableRowColumn>{user.email}</TableRowColumn>
                 <TableRowColumn>{user.name}</TableRowColumn>
-                <TableRowColumn><RaisedButton label='destroy' onClick={() => { this.handleDestroyUser(user.id) } } /></TableRowColumn>
+                <TableRowColumn><RaisedButton label='destroy' secondary={true} onClick={() => { this.handleDestroyUser(user.id) } } /></TableRowColumn>
               </TableRow>
             ) } 
           </TableBody>

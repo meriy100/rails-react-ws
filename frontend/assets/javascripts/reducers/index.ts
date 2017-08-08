@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import { error_handler } from './error_handler';
 import auth_token from './auth_token';
 import current_user from './current_user';
 import layout_state from './layout_state';
+import alert from './alert';
 import users from './users';
 
 export type currentUser = {
@@ -30,12 +30,18 @@ export type User = {
   email: string;
 }
 
+export type Alert = {
+  message?:string;
+  type?:string;
+  is_show:boolean;
+}
+
 export type State = {
   current_user?:currentUser;
   users:Array<User> 
   auth_token:AuthToken; 
+  alert:Alert;
   layout_state:LayoutState; 
-  error_handler:ErrorHandler;
 }
 
 const reducer = combineReducers({
@@ -43,6 +49,6 @@ const reducer = combineReducers({
   users, 
   auth_token, 
   layout_state, 
-  error_handler
+  alert
 })
 export default reducer;

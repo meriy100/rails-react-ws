@@ -6,12 +6,12 @@ import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
 
 
-import { ErrorHandler } from '../reducers'
+import { Alert } from '../reducers'
 import { currentUser, AuthToken } from '../reducers'
 
 interface Props {
   current_user: currentUser;
-  error_handler: ErrorHandler;
+  alert: Alert;
   auth_token:AuthToken;
   handleLogin: any;
   handleLoginCheck:any;
@@ -88,8 +88,8 @@ export default class LoginComponent extends React.Component<Props, State> {
               <FlatButton label="Login" onClick={() => this.props.handleLogin({email: this.state.email, password: this.state.password})}/>
             </CardActions>
             <Snackbar
-                      open={this.props.error_handler.is_show}
-                      message={this.props.error_handler.message}
+                      open={this.props.alert.is_show}
+                      message={this.props.alert.message}
                       autoHideDuration={4000}
                     />
           </Card>

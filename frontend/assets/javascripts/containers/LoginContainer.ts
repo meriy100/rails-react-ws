@@ -6,7 +6,7 @@ import { sessionCreate, sessionGet } from '../actions/currentUserAction'
 const mapStateToProps = (state:any) => {
   return {
     current_user: state.current_user,
-    error_handler: state.error_handler,
+    alert: state.alert,
     auth_token: state.auth_token,
   }
 }
