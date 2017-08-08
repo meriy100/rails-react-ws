@@ -4,6 +4,7 @@ import * as injectTapEventPlugin from 'react-tap-event-plugin';
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import routes from './config/routes'
+import { RouteMap } from './config/routes'
 
 import {
   BrowserRouter as Router,
@@ -35,6 +36,21 @@ export const dispatch = store.dispatch;
 
 export const Sample = () => ( <div></div>)
 
+const routeMap = (route:any) => {
+  return (
+    <Route key={ route.path } path={ route.path } component={route.component} > 
+      { route.children.map((child:any) => { routeMap(child) }) }
+    </Route>
+  )
+}
+
+const RouteWithSubRoutes = (route:RouteMap) => (
+  <Route path={route.path} render={props => (
+    <route.component {...props} routes={route.routes}/>
+  )}/>
+)
+
+
 const App = () => (
   <Provider store={store}>
     <Router>
@@ -45,9 +61,10 @@ const App = () => (
             <AuthContainer>
               <LayoutComponent>
                 <Switch>
-                  { routes.map(route => 
-                    <Route key={ route.path } path={ route.path } component={route.component} /> 
-                   )}
+                  {routes.map((route, i) => <RouteWithSubRoutes key={i} {...route}/> ) } 
+                  {/* {routes.map((route, i) => 
+                    <Route key={i} path={route.path} render={ props => { return (<route.component {...props} /> ) }  } /> 
+                  ) }  */}
                 </Switch>
               </LayoutComponent>
             </AuthContainer>

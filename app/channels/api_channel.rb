@@ -8,13 +8,10 @@ class ApiChannel < ApplicationCable::Channel
     # Any cleanup needed when channel is unsubscribed
   end
 
-  def get(data)
-    UsersReceiver.new(current_user, "some_channel", data).index
-  end
-
   def action(data)
     receiver = "#{data["resource"]}_receiver".classify.constantize.new(current_user, "some_channel", data)
     receiver.__send__(data["method"])
+    receiver.subbradcast
 
     rescue => e
       ActionCable.server.broadcast("user_#{current_user.id}",

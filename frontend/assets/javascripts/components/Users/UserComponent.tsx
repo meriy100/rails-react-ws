@@ -9,7 +9,7 @@ interface Props {
 
 export default class UserComponent extends React.Component<Props, any> {
   componentDidMount() {
-    ApiChannel.perform('get', {});     
+    ApiChannel.perform('action', { resource: 'users', method: 'index' });     
   }
 
   render() {

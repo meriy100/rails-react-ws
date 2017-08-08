@@ -4,7 +4,6 @@ import UsersComponent from '../../components/Users/UsersComponent'
 
 
 const mapStateToProps = (state:Reducer.State, ownProps:any) => {
-  console.log(ownProps.match.params.id)
   return {
     users: state.users
   }

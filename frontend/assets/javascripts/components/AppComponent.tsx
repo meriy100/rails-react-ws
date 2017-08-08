@@ -6,9 +6,7 @@ export default class AppComponent extends React.Component<any, any> {
 
   render() {
     return (
-      <div>
-        <Route children={this.props.children} />
-      </div>
+      <Route children={this.props.children} />
     )
   }
 }

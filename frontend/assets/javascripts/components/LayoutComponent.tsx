@@ -13,7 +13,7 @@ export default class LayoutComponent extends React.Component<any, {}>  {
     return (
       <div>
         <HeaderContainer />
-        <DrawerContainer />
+        <Route path={''} component={DrawerContainer} />
         <AlertNotificationContainer />
         <div className="container" style={layoutBodyStayle}>
           <Route children={this.props.children} />

@@ -22,7 +22,7 @@ export default class DrawerComponent extends React.Component<Props, any> {
         <AppBar
           iconElementLeft={<IconButton onClick={ () => { this.props.handleSetLayoutState({ is_drawer_open: false }) } }><NavigationClose /></IconButton>}
         />
-        <Link to={'/users'}><MenuItem>Users</MenuItem></Link>
+        <Link to={'/users'}><MenuItem onClick={() => this.props.handleSetLayoutState({ is_drawer_open: false }) }>Users</MenuItem></Link>
         <MenuItem>Menu Item 2</MenuItem>
       </Drawer>
     );

@@ -5,6 +5,7 @@ import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
 import FlatButton from 'material-ui/FlatButton';
 
 import { currentUser, LayoutState } from '../../reducers'
+import { Link } from 'react-router-dom';
 
 interface Props {
   current_user: currentUser;
@@ -37,7 +38,7 @@ export default class LoginComponent extends React.Component<Props, State> {
     };
     return (
       <AppBar
-        title={<span style={styles.title}>Title</span>}
+        title={<Link to={'/'}><span style={styles.title}>Title</span></Link>}
         iconElementLeft={<IconButton onClick={() => this.props.handleSetLayoutState({is_drawer_open: true})}><NavigationMenu /></IconButton>}
         iconElementRight={ <FlatButton label="Logout" onClick={() => this.props.handleLogout()} /> }
       />

@@ -5,10 +5,9 @@ class UsersReceiver < ApplicationReceiver
   end
 
   def create
-    password = 'password'
-    user = User.create!(user_params.merge(password: password))
-    broadcast(type: 'SET_USERS',
-      payload: User.all.map{|u| { id: u.id, email: u.email, name: u.name } },
+    user = User.create!(user_params.merge(password: 'password'))
+    broadcast_to(type: 'SET_USER',
+      payload: { id: user.id, email: user.email, name: user.name },
       notify: { type: 'success', message: "#{user.name}を作成しました" },
       next_location: { pathname: "/users/#{user.id}" } )
   end
@@ -16,9 +15,15 @@ class UsersReceiver < ApplicationReceiver
   def destroy
     raise StandardError.new('自分自身は削除できません') if find_user.id == current_user.id
     find_user.destroy!
-    broadcast(type: 'SET_USERS',
-      payload: User.all.map{|u| { id: u.id, email: u.email, name: u.name } },
+    broadcast_to(type: 'SET_USER',
+      payload: {},
       notify: { type: 'success', message: "#{find_user.name}を削除しました" } )
+  end
+
+  def subbradcast
+    users = User.all
+    broadcast(type: 'SET_USERS',
+      payload: users.map{|u| { id: u.id, email: u.email, name: u.name } })
   end
 
   private
