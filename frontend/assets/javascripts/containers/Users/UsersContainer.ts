@@ -1,8 +1,10 @@
 import { connect } from 'react-redux'
-import UsersComponent from '../components/UsersComponent'
+import * as Reducer from '../../reducers'
+import UsersComponent from '../../components/Users/UsersComponent'
 
 
-const mapStateToProps = (state:any) => {
+const mapStateToProps = (state:Reducer.State, ownProps:any) => {
+  console.log(ownProps.match.params.id)
   return {
     users: state.users
   }

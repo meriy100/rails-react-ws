@@ -4,7 +4,7 @@ import IconButton from 'material-ui/IconButton';
 import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
 import FlatButton from 'material-ui/FlatButton';
 
-import { currentUser, LayoutState } from '../reducers'
+import { currentUser, LayoutState } from '../../reducers'
 
 interface Props {
   current_user: currentUser;

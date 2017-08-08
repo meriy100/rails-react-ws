@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Route } from 'react-router-dom'
 
-import HeaderContainer from '../containers/HeaderContainer'
-import DrawerContainer from '../containers/DrawerContainer'
-import AlertNotificationContainer from '../containers/AlertNotificationContainer'
+import HeaderContainer from '../containers/shared/HeaderContainer'
+import DrawerContainer from '../containers/shared/DrawerContainer'
+import AlertNotificationContainer from '../containers/shared/AlertNotificationContainer'
 
 export default class LayoutComponent extends React.Component<any, {}>  {
   render() {

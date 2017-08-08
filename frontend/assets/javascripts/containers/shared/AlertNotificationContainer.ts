@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import AlertNotificationComponent from '../components/AlertNotificationComponent'
-import { hiddenAlert } from '../actions/alertAction'
+import AlertNotificationComponent from '../../components/shared/AlertNotificationComponent'
+import { hiddenAlert } from '../../actions/alertAction'
 
 const mapStateToProps = (state:any) => {
   return {

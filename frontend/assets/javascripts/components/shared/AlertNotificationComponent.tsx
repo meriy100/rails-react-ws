@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Alert } from '../reducers'
+import { Alert } from '../../reducers'
 
 interface Props {
   alert:Alert

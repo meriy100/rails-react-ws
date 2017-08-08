@@ -39,7 +39,7 @@ const App = () => (
   <Provider store={store}>
     <Router>
       <MuiThemeProvider>
-        <AppComponent>
+        <AppComponent>  
           <Switch>
             <Route exact path='/login' component={LoginContainer} />
             <AuthContainer>
@@ -52,7 +52,7 @@ const App = () => (
               </LayoutComponent>
             </AuthContainer>
           </Switch>
-        </AppComponent>
+         </AppComponent> 
       </MuiThemeProvider>
     </Router>
   </Provider>

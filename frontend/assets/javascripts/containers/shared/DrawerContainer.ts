@@ -1,8 +1,8 @@
 import { connect } from 'react-redux'
-import DrawerComponent from '../components/DrawerComponent'
-import { LayoutState } from '../reducers'
+import DrawerComponent from '../../components/shared/DrawerComponent'
+import { LayoutState } from '../../reducers'
 
-import { setLayoutState } from '../actions/layoutStateAction'
+import { setLayoutState } from '../../actions/layoutStateAction'
 
 const mapStateToProps = (state:any) => {
   return {

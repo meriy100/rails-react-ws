@@ -4,6 +4,7 @@ import current_user from './current_user';
 import layout_state from './layout_state';
 import alert from './alert';
 import users from './users';
+import next_location from './next_location'
 
 export type currentUser = {
   id: number;
@@ -36,17 +37,23 @@ export type Alert = {
   is_show:boolean;
 }
 
+export type NextLocation = {
+  pathname?:string
+} 
+
 export type State = {
   current_user?:currentUser;
   users:Array<User> 
   auth_token:AuthToken; 
   alert:Alert;
   layout_state:LayoutState; 
+  next_location:NextLocation;
 }
 
 const reducer = combineReducers({
   current_user, 
   users, 
+  next_location,
   auth_token, 
   layout_state, 
   alert

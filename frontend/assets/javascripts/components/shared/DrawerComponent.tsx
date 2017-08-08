@@ -6,7 +6,7 @@ import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 
-import { LayoutState } from '../reducers'
+import { LayoutState } from '../../reducers'
 
 
 

@@ -9,7 +9,8 @@ class UsersReceiver < ApplicationReceiver
     user = User.create!(user_params.merge(password: password))
     broadcast(type: 'SET_USERS',
       payload: User.all.map{|u| { id: u.id, email: u.email, name: u.name } },
-      notify: { type: 'success', message: "#{user.name}を作成しました" }  )
+      notify: { type: 'success', message: "#{user.name}を作成しました" },
+      next_location: { pathname: "/users/#{user.id}" } )
   end
 
   def destroy

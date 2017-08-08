@@ -1,9 +1,9 @@
 import { connect } from 'react-redux'
-import HeaderComponent from '../components/HeaderComponent'
-import { LayoutState } from '../reducers'
+import HeaderComponent from '../../components/shared/HeaderComponent'
+import { LayoutState } from '../../reducers'
 
-import { sessionDestroy } from '../actions/currentUserAction'
-import { setLayoutState } from '../actions/layoutStateAction'
+import { sessionDestroy } from '../../actions/currentUserAction'
+import { setLayoutState } from '../../actions/layoutStateAction'
 
 const mapStateToProps = (state:any) => {
   return {
